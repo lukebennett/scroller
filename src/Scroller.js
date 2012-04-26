@@ -1041,6 +1041,9 @@ var Scroller;
 					if (self.options.zooming) {
 						self.__computeScrollMax();
 					}
+
+					// Fire onStop event handler if supplied
+					self.options.onStop && self.options.onStop(self.getValues());
 				};
 				
 				// When continuing based on previous animation we choose an ease-out animation instead of ease-in-out
@@ -1139,6 +1142,9 @@ var Scroller;
 
 				// Animate to grid when snapping is active, otherwise just fix out-of-boundary positions
 				self.scrollTo(self.__scrollLeft, self.__scrollTop, self.options.snapping);
+
+				// Fire onStop event handler if supplied
+				self.options.onStop && self.options.onStop(self.getValues());
 			};
 
 			// Start animation and switch on flag
